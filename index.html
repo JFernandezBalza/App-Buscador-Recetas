@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de Recetas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Encuentra tu Receta Perfecta🧑🏽‍🍳</h1>
+    </header>
+
+    <main>
+        <section class="search-section">
+            <select id="search-type">
+                <option value="name">Nombre de Receta</option>
+                <option value="ingredient">Ingrediente Principal</option>
+            </select>
+            <input type="text" id="recipe-input" placeholder="Ingredientes (e.j., chicken, pasta) o nombre de la receta" autocomplete="off">
+            <button id="search-button">Buscar Recetas</button>
+        </section>
+
+        <section class="status-section">
+            <p id="status-message" class="status-message info"></p>
+        </section>
+
+        <div id="no-results-message" class="no-results-container">
+            <img src="https://www.themealdb.com/images/meal-icon.png" alt="Icono de Chef" class="no-results-icon">
+            <p>¡Bienvenido a tu recetario personal! Comienza buscando una receta por nombre o un ingrediente principal para descubrir deliciosos platos.</p>
+            <p>Ejemplos: "Pasta", "Chicken", "Garlic"</p>
+        </div>
+
+        <section class="recipe-grid" id="recipe-list">
+        </section>
+
+        <section class="results-section">
+            <div id="recipe-list" class="recipe-grid">
+                </div>
+        </section>
+
+        <section id="recipe-detail-section" class="recipe-detail-hidden">
+            <button id="close-detail-button">X</button>
+            <div id="recipe-detail-content">
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Buscador de Recetas</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
