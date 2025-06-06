@@ -1,14 +1,11 @@
 // ===============================================
-// Archivo: script.js
 // Descripción: Lógica principal para el Buscador de Recetas
 // Desarrollador: Joser Fernández
 // ===============================================
 
-// ----------------------------------------------------
 // SECCIÓN 1: Declaración de Variables y Elementos del DOM
 // Aquí declaramos todas las constantes y variables que referencian
 // elementos de nuestro HTML o que son globales a la aplicación.
-// ----------------------------------------------------
 
 const recipeInput = document.getElementById('recipe-input');
 const searchButton = document.getElementById('search-button');
@@ -29,12 +26,10 @@ const developerName = 'Joser Fernández';
 const API_BASE_URL = 'https://www.themealdb.com/api/json/v1/1/'; // URL base de TheMealDB
 let currentMealId = null; // Para guardar el ID de la receta que estamos viendo en detalle
 
-// ----------------------------------------------------
 // SECCIÓN 2: Funciones Basicas de Utilidad (Helpers)
 // Función para mostrar mensajes de estado al usuario
 // Estas funciones realizan tareas pequeñas y específicas que pueden ser
 // usadas por otras funciones en la aplicación.
-// ----------------------------------------------------
 
 /**
  * Muestra un mensaje de estado al usuario en la interfaz.
@@ -65,11 +60,9 @@ function toggleSearchState(isLoading) {
   // Esto previene múltiples búsquedas o entradas mientras una operación está en curso.
 }
 
-// ----------------------------------------------------
 // SECCIÓN 3: Funciones de Manipulación del DOM y Renderizado
 // Estas funciones se encargan de crear, actualizar o eliminar
 // elementos en la interfaz de usuario.
-// ----------------------------------------------------
 
 /**
  * Crea un elemento de tarjeta de receta individual para mostrar en la lista.
@@ -189,10 +182,8 @@ function renderRecipeDetail(meal) {
   // El estilo para .detail-img y .instructions ya está en style.css
 }
 
-// ----------------------------------------------------
 // SECCIÓN 4: Funciones de Interacción con la API
 // Estas funciones se encargan de hacer las peticiones a la API externa.
-// ----------------------------------------------------
 
 /**
  * Busca recetas por un término de búsqueda dado utilizando la API de TheMealDB.
@@ -282,7 +273,7 @@ async function getRecipeDetails(mealId) {
 
     if (!meal) {
       displayStatus('No se encontraron detalles para esta receta.', 'warning');
-      recipeDetailSection.classList.add('recipe-detail-hidden'); // Ocultar el modal si no hay detalles válidos
+      recipeDetailSection.classList.add('recipe-detail-hidden'); // Ocultar el detalle/modal si no hay detalles válidos
       return;
     }
 
@@ -300,22 +291,20 @@ async function getRecipeDetails(mealId) {
   }
 }
 
-// ----------------------------------------------------
 // SECCIÓN 5: Inicialización de la Aplicación y Event Listeners
 // Esta función es el punto de entrada principal de la aplicación.
 // Configura los eventos y el estado inicial.
-// ----------------------------------------------------
 
 /**
  * Inicializa la aplicación cuando el DOM está completamente cargado.
  * Configura los event listeners y el mensaje de bienvenida.
  */
 
-// Modificación de la función initializeApp para usar las nuevas funciones (Esto es el Paso 5 de la Lección 3)
+// Función de initializeApp para usar las funciones.
 function initializeApp() {
   console.log('Aplicación Buscador de Recetas iniciada por:', developerName);
 
-  // Ahora, al iniciar la app, podemos buscar algo por defecto o pedir al usuario que lo haga.
+  // Podemos buscar algo por defecto o pedir al usuario que lo haga.
   displayStatus(
     "¡Listo para encontrar tu próxima receta! Prueba buscando 'chicken' o 'pasta'."
   );
@@ -341,12 +330,12 @@ function initializeApp() {
 
   // Evento para cerrar la sección de detalle (modal)
   closeDetailButton.addEventListener('click', () => {
-    recipeDetailSection.classList.add('recipe-detail-hidden'); // Oculta el modal
+    recipeDetailSection.classList.add('recipe-detail-hidden'); // Oculta el detalle/modal
     recipeDetailContent.innerHTML = ''; // Limpiamos el contenido del detalle/modal
     currentMealId = null; // Resetea el ID de la receta actual
   });
 
-  // Opcional: Evento para permitir buscar al presionar Enter en el input
+  // Evento para permitir buscar al presionar Enter en el input
   recipeInput.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
       searchButton.click(); // Simula un clic en el botón de búsqueda
@@ -354,9 +343,8 @@ function initializeApp() {
   });
 }
 
-// ===============================================
 // PUNTO DE ENTRADA: Ejecutar la función de inicialización
 // cuando el DOM esté completamente cargado.
-// ===============================================
+
 // 3. Ejecutar la función de inicialización cuando el DOM esté completamente cargado.
 document.addEventListener('DOMContentLoaded', initializeApp);

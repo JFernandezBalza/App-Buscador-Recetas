@@ -6,13 +6,13 @@
  */
  :root {
     /* Paleta de Colores */
-    --primary-color: #ff6347; /* Tomate vibrante, usado para encabezados y acentos */
-    --secondary-color: #4CAF50; /* Verde comida, para botones de acción */
+    --primary-color: #ee3b1b; /* Tomate vibrante, usado para encabezados y acentos */
+    --secondary-color: #21a128; /* Verde comida, para botones de acción */
     --accent-color: #3b4cca; /* Azul para títulos de tarjetas */
     --dark-text-color: #333; /* Gris oscuro para texto principal */
     --medium-text-color: #666; /* Gris medio para texto secundario */
     --light-text-color: #fff; /* Blanco para texto sobre fondos oscuros */
-    --background-light-gray: #f8f8f8; /* Fondo muy claro para la página */
+    --background-light-gray: #f3f2f283; /* Fondo muy claro para la página */
     --background-white: #fff; /* Fondo blanco para contenedores principales */
     --border-light: #ddd; /* Borde gris claro */
     --border-medium: #e0e0e0; /* Borde gris medio */
@@ -43,12 +43,11 @@
 }
 
 /*
- * 2. Importación de Fuentes (opcional)
+ * 2. Importación de Fuentes
  * Aquí puedes importar fuentes de Google Fonts para darle un toque diferente a tu tipografía.
  * 'Roboto' es una fuente limpia y moderna, ideal para interfaces de usuario.
  */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
 
 /*
  * 3. Estilos Generales (body, header, main)
@@ -108,11 +107,11 @@ input[type="text"] {
     border: 1px solid var(--border-light); /* Usamos variable */
     border-radius: var(--border-radius-sm); /* Usamos variable */
     flex-grow: 1;
-    max-width: 400px;
+    max-width: 350px;
     font-size: var(--font-size-md); /* Usamos variable */
 }
 
-/* NUEVO: Estilos para el selector de tipo de búsqueda */
+/* Estilos para el selector de tipo de búsqueda */
 select#search-type {
     padding: var(--spacing-xs) var(--spacing-sm); /* Similar al input para consistencia */
     border: 1px solid var(--border-light);
@@ -136,12 +135,11 @@ select#search-type:focus {
     outline: none;
 }
 
-
 button {
     padding: var(--spacing-xs) var(--spacing-md); /* Usamos variables */
     background-color: var(--secondary-color); /* Usamos variable */
     color: var(--light-text-color); /* Usamos variable */
-    border: none;
+    border-color: var(--background-light-gray);
     border-radius: var(--border-radius-sm); /* Usamos variable */
     cursor: pointer;
     font-size: var(--font-size-md); /* Usamos variable */
@@ -149,7 +147,7 @@ button {
 }
 
 button:hover:not(:disabled) {
-    background-color: #45a049; /* Color un poco más oscuro para el hover */
+    background-color: #beca14fb; /* Color un poco más oscuro para el hover */
     transform: translateY(-2px);
 }
 
@@ -191,7 +189,6 @@ button:disabled {
     color: var(--primary-color); /* Tomate para error */
 }
 
-
 /*
  * 6. Estilos de la Cuadrícula y Tarjetas de Recetas
  * Define cómo se organizan las recetas y cómo se ve cada tarjeta individual.
@@ -230,7 +227,7 @@ button:disabled {
 
 .recipe-card h3 {
     margin: var(--spacing-sm) var(--spacing-xs) var(--spacing-xs) var(--spacing-xs); /* Usamos variables */
-    color: var(--accent-color); /* Usamos variable para el azul */
+    color: var(--primary-color); /* Usamos variable para el azul */
     font-size: var(--font-size-lg); /* Usamos variable */
 }
 
@@ -269,7 +266,6 @@ button:disabled {
     visibility: visible;
 }
 
-
 /* Clase para ocultar la sección de detalle (usada por JavaScript) */
 .recipe-detail-hidden {
     display: none !important; /* Mantenemos !important para asegurar que JavaScript lo oculte */
@@ -294,7 +290,6 @@ button:disabled {
     transform: translateY(0);
 }
 
-
 /* Estilos para el botón de cerrar detalle */
 #close-detail-button {
     position: absolute;
@@ -316,7 +311,7 @@ button:disabled {
 
 /* Efecto hover para el botón de cerrar */
 #close-detail-button:hover {
-    background-color: #cc4c39; /* Tomate más oscuro para el hover */
+    background-color: #a52d1a; /* Tomate más oscuro para el hover */
 }
 
 /* Estilos de las imágenes dentro del detalle de la receta (añadidos en JS, pero útiles para tener aquí) */
