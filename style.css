@@ -1,472 +1,472 @@
 /*
- * 1. Variables CSS (Custom Properties)
- * Estas variables nos permiten definir valores reutilizables (colores, espaciados, fuentes)
- * en un solo lugar. Si cambias una variable aquí, el cambio se refleja en todo el CSS.
- * Esto mejora la mantenibilidad y la coherencia del diseño.
- */
- :root {
-    /* Paleta de Colores */
-    --primary-color: #ee3b1b; /* Tomate vibrante, usado para encabezados y acentos */
-    --secondary-color: #21a128; /* Verde comida, para botones de acción */
-    --accent-color: #3b4cca; /* Azul para títulos de tarjetas */
-    --dark-text-color: #333; /* Gris oscuro para texto principal */
-    --medium-text-color: #666; /* Gris medio para texto secundario */
-    --light-text-color: #fff; /* Blanco para texto sobre fondos oscuros */
-    --background-light-gray: #f3f2f283; /* Fondo muy claro para la página */
-    --background-white: #fff; /* Fondo blanco para contenedores principales */
-    --border-light: #ddd; /* Borde gris claro */
-    --border-medium: #e0e0e0; /* Borde gris medio */
-
-    /* Sombras (para profundidad y jerarquía visual) */
-    --shadow-sm: rgba(0,0,0,0.08); /* Sombra suave para elementos sutiles */
-    --shadow-md: rgba(0,0,0,0.1); /* Sombra media para botones o contenedores */
-    --shadow-lg: rgba(0,0,0,0.3); /* Sombra grande para elementos flotantes (ej. modal) */
-
-    /* Espaciado (para mantener la consistencia en los márgenes y rellenos) */
-    --spacing-xs: 10px;
-    --spacing-sm: 15px;
-    --spacing-md: 20px;
-    --spacing-lg: 30px;
-    --spacing-xl: 40px;
-
-    /* Tamaños de Fuente */
-    --font-size-base: 1em; /* 16px por defecto */
-    --font-size-sm: 0.9em; /* Más pequeño */
-    --font-size-md: 1.1em; /* Ligeramente más grande */
-    --font-size-lg: 1.3em; /* Títulos de tarjeta */
-    --font-size-xl: 2.5em; /* Título principal del encabezado */
-
-    /* Radios de Borde (para elementos redondeados) */
-    --border-radius-sm: 6px;
-    --border-radius-md: 8px;
-    --border-radius-lg: 10px;
-}
-
-/*
- * 2. Importación de Fuentes
+ * 2. Importación de Fuentes (MOVido a la parte superior)
  * Aquí puedes importar fuentes de Google Fonts para darle un toque diferente a tu tipografía.
  * 'Roboto' es una fuente limpia y moderna, ideal para interfaces de usuario.
  */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-/*
- * 3. Estilos Generales (body, header, main)
- * Estos estilos definen la base de tu diseño y la estructura principal de la página.
- */
-body {
-    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Usamos Roboto como primera opción */
-    margin: 0;
-    padding: var(--spacing-md); /* Usamos variable para el padding general */
-    background-color: var(--background-light-gray); /* Usamos variable */
-    color: var(--dark-text-color); /* Usamos variable */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-}
-
-header {
-    background-color: var(--primary-color); /* Usamos variable */
-    color: var(--light-text-color); /* Usamos variable */
-    padding: var(--spacing-md) 0;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 4px 8px var(--shadow-md); /* Usamos variable para la sombra */
-}
-
-h1 {
-    margin: 0;
-    font-size: var(--font-size-xl); /* Usamos variable */
-}
-
-main {
-    background-color: var(--background-white); /* Usamos variable */
-    padding: var(--spacing-lg); /* Usamos variable */
-    border-radius: var(--border-radius-lg); /* Usamos variable */
-    box-shadow: 0 6px 15px var(--shadow-md); /* Usamos variable para la sombra */
-    margin-top: var(--spacing-lg);
-    width: 100%;
-    max-width: 900px;
-}
-
-/*
- * 4. Estilos de la Sección de Búsqueda
- * Define cómo se ven y se organizan el campo de entrada y el botón.
- */
-.search-section {
-    display: flex;
-    gap: var(--spacing-sm); /* Usamos variable para el espacio entre elementos */
-    margin-bottom: var(--spacing-lg); /* Usamos variable */
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
-}
-
-input[type="text"] {
-    padding: var(--spacing-xs) var(--spacing-sm); /* Usamos variables */
-    border: 1px solid var(--border-light); /* Usamos variable */
-    border-radius: var(--border-radius-sm); /* Usamos variable */
-    flex-grow: 1;
-    max-width: 350px;
-    font-size: var(--font-size-md); /* Usamos variable */
-}
-
-/* Estilos para el selector de tipo de búsqueda */
-select#search-type {
-    padding: var(--spacing-xs) var(--spacing-sm); /* Similar al input para consistencia */
-    border: 1px solid var(--border-light);
-    border-radius: var(--border-radius-sm);
-    font-size: var(--font-size-md);
-    cursor: pointer;
-    background-color: var(--background-white);
-    color: var(--dark-text-color);
-    /* Para algunos navegadores, puedes necesitar resetear estilos por defecto */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    /* Flecha personalizada para el select */
-    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M7%209L4%206l3-3%22%2F%3E%3C%2Fsvg%3E');
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-}
-
-select#search-type:focus {
-    border-color: var(--primary-color);
-    outline: none;
-}
-
-button {
-    padding: var(--spacing-xs) var(--spacing-md); /* Usamos variables */
-    background-color: var(--secondary-color); /* Usamos variable */
-    color: var(--light-text-color); /* Usamos variable */
-    border-color: var(--background-light-gray);
-    border-radius: var(--border-radius-sm); /* Usamos variable */
-    cursor: pointer;
-    font-size: var(--font-size-md); /* Usamos variable */
-    transition: background-color 0.2s ease, transform 0.1s ease;
-}
-
-button:hover:not(:disabled) {
-    background-color: #beca14fb; /* Color un poco más oscuro para el hover */
-    transform: translateY(-2px);
-}
-
-button:disabled {
-    background-color: #cccccc; /* Gris para deshabilitado */
-    cursor: not-allowed;
-    transform: none; /* Asegura que no se levante al pasar el ratón si está deshabilitado */
-}
-
-/*
- * 5. Estilos de Mensajes de Estado
- * Controla la apariencia del mensaje de estado (éxito, error, info).
- */
-.status-section {
-    text-align: center;
-    margin-bottom: var(--spacing-lg); /* Usamos variable */
-    min-height: 25px; /* Evita saltos de diseño cuando el mensaje está vacío */
-}
-
-#status-message {
-    font-weight: bold;
-    /* Colores dinámicos basados en el 'type' que pasamos en JavaScript */
-}
-
-/* Clases específicas para el tipo de mensaje */
-.status-message.info {
-    color: var(--dark-text-color); /* Color por defecto, oscuro */
-}
-
-.status-message.success {
-    color: var(--secondary-color); /* Verde para éxito */
-}
-
-.status-message.warning {
-    color: #FFA500; /* Naranja para advertencia */
-}
-
-.status-message.error {
-    color: var(--primary-color); /* Tomate para error */
-}
-
-/*
- * 6. Estilos de la Cuadrícula y Tarjetas de Recetas
- * Define cómo se organizan las recetas y cómo se ve cada tarjeta individual.
- */
-.recipe-grid {
-    display: grid;
-    /* Grid responsivo: crea columnas que se ajustan al ancho de la pantalla */
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: var(--spacing-lg); /* Usamos variable para el espacio entre tarjetas */
-    padding-top: var(--spacing-lg); /* Usamos variable */
-    border-top: 1px solid var(--border-light); /* Usamos variable */
-}
-
-.recipe-card {
-    border: 1px solid var(--border-medium); /* Usamos variable */
-    border-radius: var(--border-radius-md); /* Usamos variable */
-    overflow: hidden;
-    text-align: center;
-    box-shadow: 0 4px 10px var(--shadow-sm); /* Usamos variable */
-    background-color: var(--background-white); /* Usamos variable */
-    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Añadimos transición a la sombra */
-    cursor: pointer;
-}
-
-.recipe-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px var(--shadow-md); /* Sombra más pronunciada al hover */
-}
-
-.recipe-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    display: block;
-}
-
-.recipe-card h3 {
-    margin: var(--spacing-sm) var(--spacing-xs) var(--spacing-xs) var(--spacing-xs); /* Usamos variables */
-    color: var(--primary-color); /* Usamos variable para el azul */
-    font-size: var(--font-size-lg); /* Usamos variable */
-}
-
-.recipe-card p {
-    font-size: var(--font-size-sm); /* Usamos variable */
-    color: var(--medium-text-color); /* Usamos variable */
-    padding: 0 var(--spacing-xs) var(--spacing-sm) var(--spacing-xs); /* Usamos variables */
-}
-
-/*
- * 7. Estilos del Detalle de Receta (Modal)
- * Controla la superposición y el contenido del detalle de la receta.
- */
-#recipe-detail-section {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    padding: var(--spacing-md); /* Usamos variable */
-    box-sizing: border-box;
-    /* Animación de entrada/salida para el modal */
-    opacity: 0; /* Inicialmente transparente */
-    visibility: hidden; /* Inicialmente oculto a la interacción del ratón */
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-/* Clase para mostrar el modal */
-#recipe-detail-section:not(.recipe-detail-hidden) {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Clase para ocultar la sección de detalle (usada por JavaScript) */
-.recipe-detail-hidden {
-    display: none !important; /* Mantenemos !important para asegurar que JavaScript lo oculte */
-}
-
-#recipe-detail-content {
-    background-color: var(--background-white); /* Usamos variable */
-    padding: var(--spacing-lg); /* Usamos variable */
-    border-radius: var(--border-radius-lg); /* Usamos variable */
-    max-width: 700px;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-    box-shadow: 0 8px 20px var(--shadow-lg); /* Usamos variable para la sombra más intensa */
-    /* Animación de entrada para el contenido del modal */
-    transform: translateY(20px);
-    transition: transform 0.3s ease;
-}
-
-/* Cuando el modal está visible, el contenido se mueve a su posición original */
-#recipe-detail-section:not(.recipe-detail-hidden) #recipe-detail-content {
-    transform: translateY(0);
-}
-
-/* Estilos para el botón de cerrar detalle */
-#close-detail-button {
-    position: absolute;
-    top: var(--spacing-sm); /* Usamos variable */
-    right: var(--spacing-sm); /* Usamos variable */
-    background-color: var(--primary-color); /* Usamos variable */
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: var(--light-text-color); /* Usamos variable */
-    z-index: 1001;
-    border: none; /* Asegurar que no tenga borde por si acaso */
-}
-
-/* Efecto hover para el botón de cerrar */
-#close-detail-button:hover {
-    background-color: #a52d1a; /* Tomate más oscuro para el hover */
-}
-
-/* Estilos de las imágenes dentro del detalle de la receta (añadidos en JS, pero útiles para tener aquí) */
-/* Se agregan al DOM directamente por JavaScript, pero estas clases aseguran que se vean bien */
-.detail-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: var(--border-radius-md); /* Usamos variable */
-    margin-bottom: var(--spacing-md); /* Usamos variable */
-}
-
-/* Mantiene los saltos de línea del texto de instrucciones */
-.instructions {
-    white-space: pre-wrap;
-}
-
-/* Estilos para las listas de ingredientes (bullets) */
-#recipe-detail-content ul {
-    list-style: disc inside; /* Puntos circulares dentro del listado */
-    padding-left: 0;
-    margin-bottom: var(--spacing-md);
-}
-
-#recipe-detail-content li {
-    margin-bottom: 5px;
-    line-height: 1.4;
-}
-
-/*
- * 8. Estilos del Footer (Pie de Página)
- * Se mantiene en la parte inferior de la página.
- */
-footer {
-    margin-top: auto; /* Empuja el footer al final si el contenido es corto */
-    padding: var(--spacing-sm) 0; /* Usamos variable */
-    width: 100%;
-    text-align: center;
-    color: var(--medium-text-color); /* Usamos variable */
-    font-size: var(--font-size-sm); /* Usamos variable */
-}
-
-/*
- * 9. Media Queries para Responsividad
- * Ajusta los estilos para pantallas más pequeñas (móviles y tablets).
- */
-@media (max-width: 768px) {
-    body {
-        padding: var(--spacing-sm); /* Menos padding en móviles */
-    }
-
-    h1 {
-        font-size: 2em; /* Título más pequeño en móviles */
-    }
-
-    main {
-        padding: var(--spacing-md); /* Menos padding en el main */
-        margin-top: var(--spacing-md); /* Menos margen superior */
-    }
-
-    .search-section {
-        flex-direction: column; /* Apila el input y el botón en pantallas pequeñas */
-        gap: var(--spacing-sm);
-    }
-
-    input[type="text"],
-    select#search-type { /* Aplicamos al input y al select */
-        max-width: 100%; /* Ocupa todo el ancho disponible */
-        width: 100%; /* Asegura que el selector también ocupe el ancho */
-    }
-
-
-    button {
-        width: 100%; /* El botón también ocupa todo el ancho */
-    }
-
-    .recipe-grid {
-        /* Permite que las tarjetas sean más pequeñas en móviles */
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-        gap: var(--spacing-md);
-    }
-
-    .recipe-card img {
-        height: 140px; /* Imagen de tarjeta un poco más pequeña */
-    }
-
-    .recipe-card h3 {
-        font-size: 1.1em;
-    }
-
-    .recipe-card p {
-        font-size: 0.85em;
-    }
-
-    #recipe-detail-content {
-        max-width: 95%; /* Ocupa más ancho en pantallas pequeñas */
-        max-height: 95vh;
-        padding: var(--spacing-md);
-    }
-
-    #close-detail-button {
-        top: var(--spacing-xs);
-        right: var(--spacing-xs);
-        width: 30px;
-        height: 30px;
-        font-size: 1em;
-    }
-}
-
-/* Media query para pantallas aún más pequeñas (ej. algunos smartphones viejos) */
-@media (max-width: 480px) {
-    .recipe-grid {
-        grid-template-columns: 1fr; /* Una sola columna para las tarjetas */
-    }
-
-    .recipe-card img {
-        height: 180px; /* Pueden ser un poco más altas si son la única columna */
-    }
-}
-
-/*
- * 10. Estilos para Mensajes de Bienvenida / Sin Resultados
- * Estos estilos controlan la apariencia del contenedor que muestra mensajes
- * cuando no hay recetas o al inicio de la aplicación.
- */
-.no-results-container {
-    text-align: center;
-    padding: var(--spacing-xl) var(--spacing-md); /* Más padding para centrarlo visualmente */
-    color: var(--medium-text-color); /* Color de texto gris medio */
-    font-size: var(--font-size-md); /* Tamaño de fuente ligeramente más grande */
-    border: 1px dashed var(--border-medium); /* Borde punteado suave para un toque visual */
-    border-radius: var(--border-radius-md); /* Bordes redondeados */
-    margin-top: var(--spacing-lg); /* Margen superior para separarlo del área de búsqueda */
-    background-color: var(--background-white); /* Fondo blanco */
-    display: flex; /* Para centrar contenido interno (icono y texto) */
-    flex-direction: column; /* Apila el icono y el texto verticalmente */
-    align-items: center; /* Centra horizontalmente los elementos hijos */
-    justify-content: center; /* Centra verticalmente los elementos hijos */
-    max-width: 600px; /* Limita su ancho máximo para que no se extienda demasiado */
-    margin-left: auto; /* Centra horizontalmente el contenedor en la página */
-    margin-right: auto;
-}
-
-.no-results-container .no-results-icon {
-    width: 100px; /* Tamaño del icono */
-    height: auto; /* Mantiene la proporción de la imagen */
-    margin-bottom: var(--spacing-md); /* Espacio debajo del icono */
-    opacity: 0.7; /* Ligeramente transparente para que no sea muy prominente */
-}
-
-.no-results-container p {
-    margin-bottom: var(--spacing-sm); /* Espacio entre párrafos */
-    line-height: 1.5; /* Altura de línea para mejor legibilidad */
-}
-
-/* Clase para ocultar el mensaje de no resultados (usada por JavaScript) */
-.no-results-hidden {
-    display: none !important; /* Oculta completamente el elemento y anula cualquier otra regla de display */
-}
+ /*
+  * 1. Variables CSS (Custom Properties)
+  * Estas variables nos permiten definir valores reutilizables (colores, espaciados, fuentes)
+  * en un solo lugar. Si cambias una variable aquí, el cambio se refleja en todo el CSS.
+  * Esto mejora la mantenibilidad y la coherencia del diseño.
+  */
+ :root {
+     /* Paleta de Colores */
+     --primary-color: #ee3b1b; /* Tomate vibrante, usado para encabezados y acentos */
+     --secondary-color: #21a128; /* Verde comida, para botones de acción */
+     --accent-color: #3b4cca; /* Azul para títulos de tarjetas */
+     --dark-text-color: #333; /* Gris oscuro para texto principal */
+     --medium-text-color: #666; /* Gris medio para texto secundario */
+     --light-text-color: #fff; /* Blanco para texto sobre fondos oscuros */
+     --background-light-gray: #f3f2f283; /* Fondo muy claro para la página */
+     --background-white: #fff; /* Fondo blanco para contenedores principales */
+     --border-light: #ddd; /* Borde gris claro */
+     --border-medium: #e0e0e0; /* Borde gris medio */
+ 
+     /* Sombras (para profundidad y jerarquía visual) */
+     --shadow-sm: rgba(0,0,0,0.08); /* Sombra suave para elementos sutiles */
+     --shadow-md: rgba(0,0,0,0.1); /* Sombra media para botones o contenedores */
+     --shadow-lg: rgba(0,0,0,0.3); /* Sombra grande para elementos flotantes (ej. modal) */
+ 
+     /* Espaciado (para mantener la consistencia en los márgenes y rellenos) */
+     --spacing-xs: 10px;
+     --spacing-sm: 15px;
+     --spacing-md: 20px;
+     --spacing-lg: 30px;
+     --spacing-xl: 40px;
+ 
+     /* Tamaños de Fuente */
+     --font-size-base: 1em; /* 16px por defecto */
+     --font-size-sm: 0.9em; /* Más pequeño */
+     --font-size-md: 1.1em; /* Ligeramente más grande */
+     --font-size-lg: 1.3em; /* Títulos de tarjeta */
+     --font-size-xl: 2.5em; /* Título principal del encabezado */
+ 
+     /* Radios de Borde (para elementos redondeados) */
+     --border-radius-sm: 6px;
+     --border-radius-md: 8px;
+     --border-radius-lg: 10px;
+ }
+ 
+ /*
+  * 3. Estilos Generales (body, header, main)
+  * Estos estilos definen la base de tu diseño y la estructura principal de la página.
+  */
+ body {
+     font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Usamos Roboto como primera opción */
+     margin: 0;
+     padding: var(--spacing-md); /* Usamos variable para el padding general */
+     background-color: var(--background-light-gray); /* Usamos variable */
+     color: var(--dark-text-color); /* Usamos variable */
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     min-height: 100vh;
+ }
+ 
+ header {
+     background-color: var(--primary-color); /* Usamos variable */
+     color: var(--light-text-color); /* Usamos variable */
+     padding: var(--spacing-md) 0;
+     width: 100%;
+     text-align: center;
+     box-shadow: 0 4px 8px var(--shadow-md); /* Usamos variable para la sombra */
+ }
+ 
+ h1 {
+     margin: 0;
+     font-size: var(--font-size-xl); /* Usamos variable */
+ }
+ 
+ main {
+     background-color: var(--background-white); /* Usamos variable */
+     padding: var(--spacing-lg); /* Usamos variable */
+     border-radius: var(--border-radius-lg); /* Usamos variable */
+     box-shadow: 0 6px 15px var(--shadow-md); /* Usamos variable para la sombra */
+     margin-top: var(--spacing-lg);
+     width: 100%;
+     max-width: 900px;
+ }
+ 
+ /*
+  * 4. Estilos de la Sección de Búsqueda
+  * Define cómo se ven y se organizan el campo de entrada y el botón.
+  */
+ .search-section {
+     display: flex;
+     gap: var(--spacing-sm); /* Usamos variable para el espacio entre elementos */
+     margin-bottom: var(--spacing-lg); /* Usamos variable */
+     justify-content: center;
+     align-items: center;
+     flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+ }
+ 
+ input[type="text"] {
+     padding: var(--spacing-xs) var(--spacing-sm); /* Usamos variables */
+     border: 1px solid var(--border-light); /* Usamos variable */
+     border-radius: var(--border-radius-sm); /* Usamos variable */
+     flex-grow: 1;
+     max-width: 350px;
+     font-size: var(--font-size-md); /* Usamos variable */
+ }
+ 
+ /* Estilos para el selector de tipo de búsqueda */
+ select#search-type {
+     padding: var(--spacing-xs) var(--spacing-sm); /* Similar al input para consistencia */
+     border: 1px solid var(--border-light);
+     border-radius: var(--border-radius-sm);
+     font-size: var(--font-size-md);
+     cursor: pointer;
+     background-color: var(--background-white);
+     color: var(--dark-text-color);
+     /* Para algunos navegadores, puedes necesitar resetear estilos por defecto */
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+     /* Flecha personalizada para el select */
+     background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M7%209L4%206l3-3%22%2F%3E%3C%2Fsvg%3E');
+     background-repeat: no-repeat;
+     background-position: right 10px center;
+ }
+ 
+ select#search-type:focus {
+     border-color: var(--primary-color);
+     outline: none;
+ }
+ 
+ button {
+     padding: var(--spacing-xs) var(--spacing-md); /* Usamos variables */
+     background-color: var(--secondary-color); /* Usamos variable */
+     color: var(--light-text-color); /* Usamos variable */
+     border-color: var(--background-light-gray);
+     border-radius: var(--border-radius-sm); /* Usamos variable */
+     cursor: pointer;
+     font-size: var(--font-size-md); /* Usamos variable */
+     transition: background-color 0.2s ease, transform 0.1s ease;
+ }
+ 
+ button:hover:not(:disabled) {
+     background-color: #beca14fb; /* Color un poco más oscuro para el hover */
+     transform: translateY(-2px);
+ }
+ 
+ button:disabled {
+     background-color: #cccccc; /* Gris para deshabilitado */
+     cursor: not-allowed;
+     transform: none; /* Asegura que no se levante al pasar el ratón si está deshabilitado */
+ }
+ 
+ /*
+  * 5. Estilos de Mensajes de Estado
+  * Controla la apariencia del mensaje de estado (éxito, error, info).
+  */
+ .status-section {
+     text-align: center;
+     margin-bottom: var(--spacing-lg); /* Usamos variable */
+     min-height: 25px; /* Evita saltos de diseño cuando el mensaje está vacío */
+ }
+ 
+ #status-message {
+     font-weight: bold;
+     /* Colores dinámicos basados en el 'type' que pasamos en JavaScript */
+ }
+ 
+ /* Clases específicas para el tipo de mensaje */
+ .status-message.info {
+     color: var(--dark-text-color); /* Color por defecto, oscuro */
+ }
+ 
+ .status-message.success {
+     color: var(--secondary-color); /* Verde para éxito */
+ }
+ 
+ .status-message.warning {
+     color: #FFA500; /* Naranja para advertencia */
+ }
+ 
+ .status-message.error {
+     color: var(--primary-color); /* Tomate para error */
+ }
+ 
+ /*
+  * 6. Estilos de la Cuadrícula y Tarjetas de Recetas
+  * Define cómo se organizan las recetas y cómo se ve cada tarjeta individual.
+  */
+ .recipe-grid {
+     display: grid;
+     /* Grid responsivo: crea columnas que se ajustan al ancho de la pantalla */
+     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+     gap: var(--spacing-lg); /* Usamos variable para el espacio entre tarjetas */
+     padding-top: var(--spacing-lg); /* Usamos variable */
+     border-top: 1px solid var(--border-light); /* Usamos variable */
+ }
+ 
+ .recipe-card {
+     border: 1px solid var(--border-medium); /* Usamos variable */
+     border-radius: var(--border-radius-md); /* Usamos variable */
+     overflow: hidden;
+     text-align: center;
+     box-shadow: 0 4px 10px var(--shadow-sm); /* Usamos variable */
+     background-color: var(--background-white); /* Usamos variable */
+     transition: transform 0.2s ease, box-shadow 0.2s ease; /* Añadimos transición a la sombra */
+     cursor: pointer;
+ }
+ 
+ .recipe-card:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 8px 15px var(--shadow-md); /* Sombra más pronunciada al hover */
+ }
+ 
+ .recipe-card img {
+     width: 100%;
+     height: 200px;
+     object-fit: cover;
+     display: block;
+ }
+ 
+ .recipe-card h3 {
+     margin: var(--spacing-sm) var(--spacing-xs) var(--spacing-xs) var(--spacing-xs); /* Usamos variables */
+     color: var(--primary-color); /* Usamos variable para el azul */
+     font-size: var(--font-size-lg); /* Usamos variable */
+ }
+ 
+ .recipe-card p {
+     font-size: var(--font-size-sm); /* Usamos variable */
+     color: var(--medium-text-color); /* Usamos variable */
+     padding: 0 var(--spacing-xs) var(--spacing-sm) var(--spacing-xs); /* Usamos variables */
+ }
+ 
+ /*
+  * 7. Estilos del Detalle de Receta (Modal)
+  * Controla la superposición y el contenido del detalle de la receta.
+  */
+ #recipe-detail-section {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0, 0, 0, 0.7);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     z-index: 1000;
+     padding: var(--spacing-md); /* Usamos variable */
+     box-sizing: border-box;
+     /* Animación de entrada/salida para el modal */
+     opacity: 0; /* Inicialmente transparente */
+     visibility: hidden; /* Inicialmente oculto a la interacción del ratón */
+     transition: opacity 0.3s ease, visibility 0.3s ease;
+ }
+ 
+ /* Clase para mostrar el modal */
+ #recipe-detail-section:not(.recipe-detail-hidden) {
+     opacity: 1;
+     visibility: visible;
+ }
+ 
+ /* Clase para ocultar la sección de detalle (usada por JavaScript) */
+ .recipe-detail-hidden {
+     display: none !important; /* Mantenemos !important para asegurar que JavaScript lo oculte */
+ }
+ 
+ #recipe-detail-content {
+     background-color: var(--background-white); /* Usamos variable */
+     padding: var(--spacing-lg); /* Usamos variable */
+     border-radius: var(--border-radius-lg); /* Usamos variable */
+     max-width: 700px;
+     max-height: 90vh;
+     overflow-y: auto;
+     position: relative;
+     box-shadow: 0 8px 20px var(--shadow-lg); /* Usamos variable para la sombra más intensa */
+     /* Animación de entrada para el contenido del modal */
+     transform: translateY(20px);
+     transition: transform 0.3s ease;
+ }
+ 
+ /* Cuando el modal está visible, el contenido se mueve a su posición original */
+ #recipe-detail-section:not(.recipe-detail-hidden) #recipe-detail-content {
+     transform: translateY(0);
+ }
+ 
+ /* Estilos para el botón de cerrar detalle */
+ #close-detail-button {
+     position: absolute;
+     top: var(--spacing-sm); /* Usamos variable */
+     right: var(--spacing-sm); /* Usamos variable */
+     background-color: var(--primary-color); /* Usamos variable */
+     border-radius: 50%;
+     width: 35px;
+     height: 35px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-size: 1.2em;
+     font-weight: bold;
+     color: var(--light-text-color); /* Usamos variable */
+     z-index: 1001;
+     border: none; /* Asegurar que no tenga borde por si acaso */
+ }
+ 
+ /* Efecto hover para el botón de cerrar */
+ #close-detail-button:hover {
+     background-color: #a52d1a; /* Tomate más oscuro para el hover */
+ }
+ 
+ /* Estilos de las imágenes dentro del detalle de la receta (añadidos en JS, pero útiles para tener aquí) */
+ /* Se agregan al DOM directamente por JavaScript, pero estas clases aseguran que se vean bien */
+ .detail-img {
+     max-width: 100%;
+     height: auto;
+     border-radius: var(--border-radius-md); /* Usamos variable */
+     margin-bottom: var(--spacing-md); /* Usamos variable */
+ }
+ 
+ /* Mantiene los saltos de línea del texto de instrucciones */
+ .instructions {
+     white-space: pre-wrap;
+ }
+ 
+ /* Estilos para las listas de ingredientes (bullets) */
+ #recipe-detail-content ul {
+     list-style: disc inside; /* Puntos circulares dentro del listado */
+     padding-left: 0;
+     margin-bottom: var(--spacing-md);
+ }
+ 
+ #recipe-detail-content li {
+     margin-bottom: 5px;
+     line-height: 1.4;
+ }
+ 
+ /*
+  * 8. Estilos del Footer (Pie de Página)
+  * Se mantiene en la parte inferior de la página.
+  */
+ footer {
+     margin-top: auto; /* Empuja el footer al final si el contenido es corto */
+     padding: var(--spacing-sm) 0; /* Usamos variable */
+     width: 100%;
+     text-align: center;
+     color: var(--medium-text-color); /* Usamos variable */
+     font-size: var(--font-size-sm); /* Usamos variable */
+ }
+ 
+ /*
+  * 9. Media Queries para Responsividad
+  * Ajusta los estilos para pantallas más pequeñas (móviles y tablets).
+  */
+ @media (max-width: 768px) {
+     body {
+         padding: var(--spacing-sm); /* Menos padding en móviles */
+     }
+ 
+     h1 {
+         font-size: 2em; /* Título más pequeño en móviles */
+     }
+ 
+     main {
+         padding: var(--spacing-md); /* Menos padding en el main */
+         margin-top: var(--spacing-md); /* Menos margen superior */
+     }
+ 
+     .search-section {
+         flex-direction: column; /* Apila el input y el botón en pantallas pequeñas */
+         gap: var(--spacing-sm);
+     }
+ 
+     input[type="text"],
+     select#search-type { /* Aplicamos al input y al select */
+         max-width: 100%; /* Ocupa todo el ancho disponible */
+         width: 100%; /* Asegura que el selector también ocupe el ancho */
+     }
+ 
+ 
+     button {
+         width: 100%; /* El botón también ocupa todo el ancho */
+     }
+ 
+     .recipe-grid {
+         /* Permite que las tarjetas sean más pequeñas en móviles */
+         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+         gap: var(--spacing-md);
+     }
+ 
+     .recipe-card img {
+         height: 140px; /* Imagen de tarjeta un poco más pequeña */
+     }
+ 
+     .recipe-card h3 {
+         font-size: 1.1em;
+     }
+ 
+     .recipe-card p {
+         font-size: 0.85em;
+     }
+ 
+     #recipe-detail-content {
+         max-width: 95%; /* Ocupa más ancho en pantallas pequeñas */
+         max-height: 95vh;
+         padding: var(--spacing-md);
+     }
+ 
+     #close-detail-button {
+         top: var(--spacing-xs);
+         right: var(--spacing-xs);
+         width: 30px;
+         height: 30px;
+         font-size: 1em;
+     }
+ }
+ 
+ /* Media query para pantallas aún más pequeñas (ej. algunos smartphones viejos) */
+ @media (max-width: 480px) {
+     .recipe-grid {
+         grid-template-columns: 1fr; /* Una sola columna para las tarjetas */
+     }
+ 
+     .recipe-card img {
+         height: 180px; /* Pueden ser un poco más altas si son la única columna */
+     }
+ }
+ 
+ /*
+  * 10. Estilos para Mensajes de Bienvenida / Sin Resultados
+  * Estos estilos controlan la apariencia del contenedor que muestra mensajes
+  * cuando no hay recetas o al inicio de la aplicación.
+  */
+ .no-results-container {
+     text-align: center;
+     padding: var(--spacing-xl) var(--spacing-md); /* Más padding para centrarlo visualmente */
+     color: var(--medium-text-color); /* Color de texto gris medio */
+     font-size: var(--font-size-md); /* Tamaño de fuente ligeramente más grande */
+     border: 1px dashed var(--border-medium); /* Borde punteado suave para un toque visual */
+     border-radius: var(--border-radius-md); /* Bordes redondeados */
+     margin-top: var(--spacing-lg); /* Margen superior para separarlo del área de búsqueda */
+     background-color: var(--background-white); /* Fondo blanco */
+     display: flex; /* Para centrar contenido interno (icono y texto) */
+     flex-direction: column; /* Apila el icono y el texto verticalmente */
+     align-items: center; /* Centra horizontalmente los elementos hijos */
+     justify-content: center; /* Centra verticalmente los elementos hijos */
+     max-width: 600px; /* Limita su ancho máximo para que no se extienda demasiado */
+     margin-left: auto; /* Centra horizontalmente el contenedor en la página */
+     margin-right: auto;
+ }
+ 
+ .no-results-container .no-results-icon {
+     width: 100px; /* Tamaño del icono */
+     height: auto; /* Mantiene la proporción de la imagen */
+     margin-bottom: var(--spacing-md); /* Espacio debajo del icono */
+     opacity: 0.7; /* Ligeramente transparente para que no sea muy prominente */
+ }
+ 
+ .no-results-container p {
+     margin-bottom: var(--spacing-sm); /* Espacio entre párrafos */
+     line-height: 1.5; /* Altura de línea para mejor legibilidad */
+ }
+ 
+ /* Clase para ocultar el mensaje de no resultados (usada por JavaScript) */
+ .no-results-hidden {
+     display: none !important; /* Oculta completamente el elemento y anula cualquier otra regla de display */
+ }

@@ -7,17 +7,17 @@
 // Aquí declaramos todas las constantes y variables que referencian
 // elementos de nuestro HTML o que son globales a la aplicación.
 
-const recipeInput = document.getElementById('recipe-input');
-const searchButton = document.getElementById('search-button');
-const statusMessage = document.getElementById('status-message');
-const recipeList = document.getElementById('recipe-list');
-const recipeDetailSection = document.getElementById('recipe-detail-section');
-const recipeDetailContent = document.getElementById('recipe-detail-content');
-const closeDetailButton = document.getElementById('close-detail-button');
-const noResultsMessage = document.getElementById('no-results-message');
+let recipeInput;
+let searchButton;
+let statusMessage;
+let recipeList;
+let recipeDetailSection;
+let recipeDetailContent;
+let closeDetailButton;
+let noResultsMessage
 
 // Referencia al selector de tipo de búsqueda
-const searchTypeSelect = document.getElementById('search-type');
+ searchTypeSelect = document.getElementById('search-type');
 
 // Una variable para almacenar el nombre del desarrollador
 const developerName = 'Joser Fernández';
@@ -302,6 +302,16 @@ async function getRecipeDetails(mealId) {
 
 // Función de initializeApp para usar las funciones.
 function initializeApp() {
+    recipeInput = document.getElementById('recipe-input');
+    searchButton = document.getElementById('search-button');
+    statusMessage = document.getElementById('status-message');
+    recipeList = document.getElementById('recipe-list');
+    recipeDetailSection = document.getElementById('recipe-detail-section');
+    recipeDetailContent = document.getElementById('recipe-detail-content');
+    closeDetailButton = document.getElementById('close-detail-button');
+    noResultsMessage = document.getElementById('no-results-message');
+    searchTypeSelect = document.getElementById('search-type');
+
   console.log('Aplicación Buscador de Recetas iniciada por:', developerName);
 
   // Podemos buscar algo por defecto o pedir al usuario que lo haga.
@@ -342,9 +352,54 @@ function initializeApp() {
     }
   });
 }
+// ---
+// SECCIÓN 6: Funciones de Testing (Para desarrollo y verificación manual)
+// Aquí colocaremos las funciones y llamadas para realizar pruebas.
+// Estas pruebas son principalmente para verificación en consola del navegador.
+// ---
+
+function runTests() {
+    console.log("--- Iniciando Pruebas de la Aplicación ---");
+
+    // Pruebas para displayStatus
+    displayStatus("Test Info", "info");
+    console.assert(statusMessage.textContent === "Test Info" && statusMessage.className.includes("info"), "FAIL: displayStatus - Info");
+
+    displayStatus("Test Success", "success");
+    console.assert(statusMessage.textContent === "Test Success" && statusMessage.className.includes("success"), "FAIL: displayStatus - Success");
+
+    displayStatus("Test Error", "error");
+    console.assert(statusMessage.textContent === "Test Error" && statusMessage.className.includes("error"), "FAIL: displayStatus - Error");
+
+    // Pruebas para clearRecipeList (requiere observación manual de la UI)
+    // Para probar esta función, deberías tener elementos en #recipe-list o #no-results-message visibles.
+    // console.log("Probando clearRecipeList - Observar la UI.");
+    // clearRecipeList();
+    // console.assert(recipeList.innerHTML === '' && noResultsMessage.classList.contains('no-results-hidden'), "FAIL: clearRecipeList - No se limpió correctamente.");
+
+    // Pruebas para toggleSearchState
+    toggleSearchState(true);
+    console.assert(recipeInput.disabled === true && searchButton.disabled === true && searchTypeSelect.disabled === true, "FAIL: toggleSearchState - Disable");
+
+    toggleSearchState(false);
+    console.assert(recipeInput.disabled === false && searchButton.disabled === false && searchTypeSelect.disabled === false, "FAIL: toggleSearchState - Enable");
+
+    // NOTA: Para probar funciones que dependen de 'fetch' (como searchRecipes o getRecipeDetails),
+    // necesitarías un entorno de testing más avanzado que permita "mockear" las respuestas de la red.
+    // Para este proyecto simple de HTML/CSS/JS puro, las pruebas se hacen mejor de forma manual
+    // observando la interfaz de usuario y los resultados de las funciones en la consola.
+
+    displayStatus(
+      "¡Listo para encontrar tu próxima receta! Prueba buscando 'chicken' o 'pasta'."
+    );
+    console.log("--- Pruebas Terminadas ---");
+}
 
 // PUNTO DE ENTRADA: Ejecutar la función de inicialización
 // cuando el DOM esté completamente cargado.
 
 // 3. Ejecutar la función de inicialización cuando el DOM esté completamente cargado.
-document.addEventListener('DOMContentLoaded', initializeApp);
+document.addEventListener('DOMContentLoaded', () => {
+    initializeApp();
+    runTests();
+});
